@@ -39,24 +39,7 @@ Plug 'rebelot/kanagawa.nvim'
 set encoding=UTF-8
 
 call plug#end()
-" telescope key maps
-nmap <Space><Space> :Telescope find_files<CR>
-vmap <Space><Space> :Telescope<CR>
-
-" native vim/nvim keymaps 
-nmap <BS> :w<CR>
-nmap <BS><BS> :wqall!<CR>
-vmap <BS> :w <CR>
-vmap <BS><BS> :wqall!<CR>
-tmap <C-Space> <Esc>
-nmap <C-Space> <Esc>
-imap <C-Space> <Esc>
-vmap <C-Space> <Esc>
-
 "floaterm kaymaps
-vmap <CR><CR> :FloatermToggle<CR>
-nmap <CR><CR> :FloatermToggle<CR>
-tmap <C-Space> <C-\><C-n>:FloatermToggle<CR>
 
 :set completeopt-=preview " For No Previews
 
@@ -96,19 +79,23 @@ augroup fish_syntax
 	autocmd BufNewFile,BufRead *.fish set syntax=sh
 augroup end
 
-
+let mapleader = "\<Space>"
 
 " Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-nnoremap <Space><Space> <cmd>Telescope <cr>
-" Using Lua functions
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
-
-"Treesitter Lua file config"
+nnoremap <Space> <cmd>Telescope current_buffer_fuzzy_find<cr>
+vnoremap <Space> <cmd> Telescope current_buffer_fuzzy_find<cr>
+nnoremap <Space><Space> <cmd>Telescope find_files<cr>
+vnoremap <Space><Space> <cmd>Telescope find_files<cr>
+imap <C-Space> <Esc>
+nmap <C-Space> <Esc>
+tmap <C-Space> <Esc>
+vmap <C-Space> <Esc>
+nmap <BS> :wall<C>
+vmap <BS> :wall<CR>
+nmap <BS><BS> :wqall!<CR>
+vmap <BS><BS> :wqall!<CR>
+vmap <CR><CR> :FloatermToggle<CR>
+nmap <CR><CR> :FloatermToggle<CR>
+tmap <C-Space> <C-\><C-n>:FloatermToggle<CR>
+"Treesitter Lua file config
 luafile $HOME/.config/nvim/lua/treesitter.lua

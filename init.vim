@@ -33,6 +33,8 @@ Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jiangmiao/auto-pairs'
+Plug 'rebelot/kanagawa.nvim'
+
 
 set encoding=UTF-8
 
@@ -64,7 +66,7 @@ tmap <C-Space> <C-\><C-n>:FloatermToggle<CR>
 
 :set completeopt-=preview " For No Previews
 
-:colorscheme gruvbox-material
+:colorscheme kanagawa
 
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"

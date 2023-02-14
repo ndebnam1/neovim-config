@@ -1,0 +1,118 @@
+:set number
+:set relativenumber
+:set autoindent
+:set tabstop=4
+:set shiftwidth=4
+:set smarttab
+:set softtabstop=4
+:set mouse=a
+let g:neovide_fullscreen = v:true
+
+call plug#begin()
+
+Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
+Plug 'https://github.com/preservim/nerdtree' " NerdTree
+Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
+Plug 'https://github.com/vim-airline/vim-airline' " Status bar
+Plug 'https://github.com/lifepillar/pgsql.vim' " PSQL Pluging needs :SQLSetType pgsql.vim
+Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
+Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Retro Scheme
+Plug 'https://github.com/neoclide/coc.nvim'  " Auto Completion
+Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
+Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
+Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
+Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
+Plug 'https://github.com/lambdalisue/suda.vim/' " Sudo
+Plug 'https://github.com/bfrg/vim-cpp-modern' "c++ syntax highlighting
+Plug 'voldikss/vim-floaterm'
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'LinArcX/telescope-command-palette.nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-telescope/telescope-file-browser.nvim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'jiangmiao/auto-pairs'
+
+set encoding=UTF-8
+
+call plug#end()
+" nerdtree keymaps"
+nnoremap <C-f> :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+"coc keymaps
+nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
+ "telescope key maps
+nmap <Space><Space> :Telescope<CR>
+vmap <Space><Space> :Telescope<CR>
+
+" native vim/nvim keymaps 
+nmap <BS> :w<CR>
+nmap <BS><BS> :wqall<CR>
+vmap <BS> :w <CR>
+vmap <BS><BS> :wqall<CR>
+tmap <C-Space> <Esc>
+nmap <C-Space> <Esc>
+imap <C-Space> <Esc>
+vmap <C-Space> <Esc>
+
+"floaterm kaymaps
+vmap <CR><CR> :FloatermToggle<CR>
+nmap <CR><CR> :FloatermToggle<CR>
+tmap <C-Space> <C-\><C-n>:FloatermToggle<CR>
+
+:set completeopt-=preview " For No Previews
+
+:colorscheme gruvbox-material
+
+let g:NERDTreeDirArrowExpandable="+"
+let g:NERDTreeDirArrowCollapsible="~"
+
+" --- Just Some Notes ---
+" :PlugClean :PlugInstall :UpdateRemotePlugins
+"
+" :CocInstall coc-python
+" :CocInstall coc-clangd
+" :CocInstall coc-snippets
+" :CocCommand snippets.edit... FOR EACH FILE TYPE
+
+" air-line
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" airline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+
+inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
+
+augroup fish_syntax
+	au!
+	autocmd BufNewFile,BufRead *.fish set syntax=sh
+augroup end
+
+
+
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <Space><Space> <cmd>Telescope <cr>
+" Using Lua functions
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+
+"Treesitter Lua file config"
+luafile $HOME/.config/nvim/lua/treesitter.lua

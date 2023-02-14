@@ -39,21 +39,15 @@ Plug 'rebelot/kanagawa.nvim'
 set encoding=UTF-8
 
 call plug#end()
-" nerdtree keymaps"
-nnoremap <C-f> :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-"coc keymaps
-nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
- "telescope key maps
-nmap <Space><Space> :Telescope<CR>
+" telescope key maps
+nmap <Space><Space> :Telescope find_files<CR>
 vmap <Space><Space> :Telescope<CR>
 
 " native vim/nvim keymaps 
 nmap <BS> :w<CR>
-nmap <BS><BS> :wqall<CR>
+nmap <BS><BS> :wqall!<CR>
 vmap <BS> :w <CR>
-vmap <BS><BS> :wqall<CR>
+vmap <BS><BS> :wqall!<CR>
 tmap <C-Space> <Esc>
 nmap <C-Space> <Esc>
 imap <C-Space> <Esc>

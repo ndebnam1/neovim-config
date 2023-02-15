@@ -34,7 +34,7 @@ Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'rebelot/kanagawa.nvim'
-
+Plug 'codota/tabnine-nvim', {'do': './dl_binaries.sh'}
 
 set encoding=UTF-8
 
@@ -90,12 +90,14 @@ imap <C-Space> <Esc>
 nmap <C-Space> <Esc>
 tmap <C-Space> <Esc>
 vmap <C-Space> <Esc>
-nmap <BS> :wall<C>
+nmap <BS> :wall<CR>
 vmap <BS> :wall<CR>
 nmap <BS><BS> :wqall!<CR>
 vmap <BS><BS> :wqall!<CR>
 vmap <CR><CR> :FloatermToggle<CR>
 nmap <CR><CR> :FloatermToggle<CR>
 tmap <C-Space> <C-\><C-n>:FloatermToggle<CR>
-"Treesitter Lua file config
+" Lua file config
 luafile $HOME/.config/nvim/lua/treesitter.lua
+
+
